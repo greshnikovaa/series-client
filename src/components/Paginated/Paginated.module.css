@@ -1,0 +1,31 @@
+.mein{
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    
+}
+i{
+    cursor: pointer;
+}
+i:hover{
+    color: rgb(255, 102, 0);
+}
+
+.pages{
+    display: flex;
+    gap: 10px;
+    padding: 0;
+}
+.pages li.active{
+    color: rgb(255, 102, 0);
+    border-bottom: 2px solid rgb(255, 102, 0);
+}
+.pages li{
+    list-style: none;
+    cursor: pointer;
+    border-bottom: 2px solid rgba(0, 0, 0, 0);
+}
+.pages li:hover{
+    color: rgb(255, 102, 0);
+}

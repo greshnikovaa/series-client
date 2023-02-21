@@ -3,6 +3,7 @@ import styles from './Home.module.css'
 import {Link} from 'react-router-dom'
 import axios from 'axios';
 import Loading from '../../components/Loading/Loading'
+import Paginated from '../../components/Paginated/Paginated';
 const API_URL = process.env.REACT_APP_API_URL
 
 const filter = [
@@ -16,17 +17,21 @@ const Home = () => {
     const [serials, setSerials] = useState([])
     const [serialsFilter, setSerialsFilter] = useState([])
     const [category, setCategory] = useState('all')
+    const [page, setPage] = useState(3)
+    const [totalPage, setTotalPage] = useState(0)
 
     useEffect(()=>{
-        axios.get(API_URL+'api/series')
+        axios.get(API_URL+'api/series?page='+page)
          .then((res)=>{
-            // console.log(res.data)
-            setSerials(res.data)
+            console.log('page:', res.data.page)
+            console.log('totalPage:', res.data.totalPages)
+            setTotalPage(res.data.totalPages)
+            setSerials(res.data.series)
          })
          .catch((err)=>{
             console.log(err)
          })
-    },[])
+    },[page])
 
     const getSeriesFilter = useCallback(() =>{
         if(category==='all'){
@@ -80,7 +85,7 @@ const Home = () => {
                     </div>
                 )}    
             </div>
-            
+            <Paginated page={page} setPage={setPage} totalPage={totalPage}/>
         </div>
     );
 };

@@ -1,0 +1,87 @@
+body{
+    color:white;
+    margin: 0;
+    padding: 0;
+}
+.container{
+    margin: 25px auto;
+    padding: 0 25px;
+    max-width: 1200px;
+
+}
+.title{
+    font-size: 30px;
+}
+.verh{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 15px;
+
+}
+.verh img{
+    width: 100%;
+    border-radius: 15px;
+}
+.right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.right li{
+    list-style: none;
+    font-size: 1rem;
+    margin: 10px 0;
+}
+.info{
+    padding: 0;
+}
+.btn{
+    font-size: 1rem;
+    padding: 15px 20px;
+    background-color: rgba(0, 0, 0, 0.536);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    transition: all 0.4s;
+}
+.btn:hover{
+    cursor: pointer;
+    background-color: rgba(255, 102, 0, 0.5);
+    font-weight: 600;
+
+}
+.option{
+    display: flex;
+    gap:1rem;
+}
+.delete:hover{
+    background-color: rgba(255, 0, 0, 0.57)
+}
+.btn a{
+    text-decoration: none;
+    color: white;
+}
+.opis{
+    font-size: 1.25rem;
+    margin-top: 30px;
+}
+.opisanie{
+    font-size: 0.8rem;
+}
+@media screen and (max-width:768px){
+    .verh{
+        grid-template-columns: 1fr;
+        gap:1rem;
+    }
+    .info{
+        margin: 0;
+    }
+
+}
+@media screen and (max-width:480px){
+    .verh{
+        gap:1rem;
+    }
+}

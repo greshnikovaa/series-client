@@ -17,7 +17,7 @@ const Home = () => {
     const [serials, setSerials] = useState([])
     const [serialsFilter, setSerialsFilter] = useState([])
     const [category, setCategory] = useState('all')
-    const [page, setPage] = useState(3)
+    const [page, setPage] = useState(1)
     const [totalPage, setTotalPage] = useState(0)
 
     useEffect(()=>{

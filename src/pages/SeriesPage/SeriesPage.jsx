@@ -41,7 +41,7 @@ const SeriesPage = () => {
                     </ul>
                 {/* <div> */}
                     <div className={styles.option}>
-                        <button className={styles.btn}>Смотреть </button> 
+                        <button className={styles.btn}><Link to = {'/'}>Список сериалов</Link></button> 
                         <button className={`${styles.btn} ${styles.change}`}><Link to={`/edit/${series._id}`}><i className="bi bi-pencil-square"></i></Link></button>
                         <button onClick={() => deleteSeries(series._id)} className={`${styles.btn} ${styles.delete}`}><i className="bi bi-trash3"></i></button>
                     </div>    

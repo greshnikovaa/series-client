@@ -15,13 +15,12 @@ const filter = [
 
 const Home = () => {
     const [serials, setSerials] = useState([])
-    const [serialsFilter, setSerialsFilter] = useState([])
     const [category, setCategory] = useState('all')
     const [page, setPage] = useState(1)
     const [totalPage, setTotalPage] = useState(0)
 
     useEffect(()=>{
-        axios.get(API_URL+'api/series?page='+page)
+        axios.get(API_URL+'api/series?page='+page+'&category='+category)
          .then((res)=>{
             console.log('page:', res.data.page)
             console.log('totalPage:', res.data.totalPages)
@@ -31,23 +30,11 @@ const Home = () => {
          .catch((err)=>{
             console.log(err)
          })
-    },[page])
-
-    const getSeriesFilter = useCallback(() =>{
-        if(category==='all'){
-            setSerialsFilter(serials)
-        }
-        else{
-            setSerialsFilter(serials.filter((series)=>{
-                console.log(category)
-                return String(series.category)===String(category)
-            }))
-        } 
-    },[category, serials])
-
-    useEffect(()=>{
-        getSeriesFilter()
-    },[getSeriesFilter])
+    },[page, category])
+    const getFilter = (item) =>{
+        setCategory(item.category)
+        setPage(1)
+    }
 
     return (
         <div>
@@ -67,7 +54,7 @@ const Home = () => {
             <ul className={styles.view}>
                 {filter.map((item)=>
                     <li key={item.category} className={category===item.category?styles.active:''} 
-                    onClick={()=>setCategory(item.category)}>{item.title}</li>
+                    onClick={()=>getFilter(item)}>{item.title}</li>
                 )}
             </ul>
             
@@ -75,7 +62,7 @@ const Home = () => {
                 <div className={styles.card_btn}><Link className={styles.btn} to={`/create`}>+</Link></div>
                 {serials.length<1
                 ?<Loading/>
-                :serialsFilter.map((series)=>
+                :serials.map((series)=>
                     <div key={series._id} className={styles.card}>
                         <img alt={series.title} src={series.cover}/>
                         <div className={styles.opis}>
